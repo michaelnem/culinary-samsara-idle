@@ -15,4 +15,8 @@ export class SaveManagerService {
     }
     return JSON.parse(playerData);
   }
+
+  saveGame(player: PlayerData) {
+
+  }
 }

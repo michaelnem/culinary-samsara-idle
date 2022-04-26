@@ -1,27 +1,52 @@
 import { Injectable } from '@angular/core';
-import { SectionInterface } from '../interfaces/section';
-import { JOB_LIST } from '../constants/jobs.const';
 import { SaveManagerService } from './save-manager.service';
 import { PlayerService } from './player.service';
 import {PlayerData} from "../interfaces/playerData";
+import {interval, Subject} from "rxjs";
+import {takeUntil, tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameManagerService {
-  defaultJobs: SectionInterface[] = JOB_LIST;
-  data = {};
+  private _pause$: any = new Subject();
+  private _tick: any = interval(300).pipe(
+    tap(this.gameTick),
+    takeUntil(this._pause$)
+  );
 
   constructor(
     private saveManagerService: SaveManagerService,
     private playerService: PlayerService
-  ) {}
+  ) {
+    this.load();
+  }
 
-  loadGame() {
+  gameTick(value: number) {
+    if (value % 10 === 0) {
+      this.save();
+    }
+    this.playerService.tick();
+  }
+
+  load() {
     const savedGame = this.saveManagerService.loadGame();
     if (!savedGame) {
       return;
     }
     this.playerService.setPlayer(savedGame as PlayerData);
   }
+
+  save() {
+    this.saveManagerService.saveGame(this.playerService.getPlayer());
+  }
+
+  pause() {
+    this._pause$.next();
+  }
+
+  resume() {
+    this._tick.subscribe();
+  }
+
 }
