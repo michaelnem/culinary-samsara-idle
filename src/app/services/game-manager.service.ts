@@ -10,10 +10,7 @@ import { takeUntil, tap } from 'rxjs/operators';
 })
 export class GameManagerService {
   private _pause$: any = new Subject();
-  private _tick: Observable<any> = interval(300).pipe(
-    tap(this.gameTick),
-    takeUntil(this._pause$)
-  );
+  private _tick: Observable<any>;
   private sub?: Subscription;
 
   constructor(
@@ -21,14 +18,19 @@ export class GameManagerService {
     private playerService: PlayerService
   ) {
     this.load();
+    this._tick = interval(300).pipe(
+      tap(this.gameTick),
+      takeUntil(this._pause$)
+    );
+    this.resume();
   }
 
-  gameTick(value: number) {
+  gameTick = (value: number) => {
     // if (value % 10 === 0) {
     //   this.save();
     // }
     this.playerService.tick();
-  }
+  };
 
   load() {
     const savedGame = this.saveManagerService.loadGame();
