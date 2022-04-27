@@ -13,6 +13,9 @@ import { ScreensComponent } from './screens/screens.component';
 import { NavBarItemComponent } from './nav-bar/nav-bar-item/nav-bar-item.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ScreenManagerService } from '../services/screen-manager.service';
+import { AgeService } from '../services/age.service';
+import { GameManagerService } from '../services/game-manager.service';
+import { PlayerService } from '../services/player.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,12 @@ import { ScreenManagerService } from '../services/screen-manager.service';
     NavBarItemComponent,
   ],
   imports: [CommonModule, MatCardModule, MatButtonModule],
-  providers: [ScreenManagerService],
+  providers: [
+    PlayerService,
+    ScreenManagerService,
+    AgeService,
+    GameManagerService,
+  ],
   exports: [MainComponent],
 })
 export class ComponentsModule {}

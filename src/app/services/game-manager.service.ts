@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { SaveManagerService } from './save-manager.service';
 import { PlayerService } from './player.service';
-import {PlayerData} from "../interfaces/playerData";
-import {interval, Subject} from "rxjs";
-import {takeUntil, tap} from "rxjs/operators";
+import { PlayerData } from '../interfaces/playerData';
+import { interval, Observable, Subject, Subscription } from 'rxjs';
+import { takeUntil, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameManagerService {
   private _pause$: any = new Subject();
-  private _tick: any = interval(300).pipe(
+  private _tick: Observable<any> = interval(300).pipe(
     tap(this.gameTick),
     takeUntil(this._pause$)
   );
+  private sub?: Subscription;
 
   constructor(
     private saveManagerService: SaveManagerService,
@@ -23,9 +24,9 @@ export class GameManagerService {
   }
 
   gameTick(value: number) {
-    if (value % 10 === 0) {
-      this.save();
-    }
+    // if (value % 10 === 0) {
+    //   this.save();
+    // }
     this.playerService.tick();
   }
 
@@ -46,7 +47,6 @@ export class GameManagerService {
   }
 
   resume() {
-    this._tick.subscribe();
+    this.sub = this._tick.subscribe();
   }
-
 }
