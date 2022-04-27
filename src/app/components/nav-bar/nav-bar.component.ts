@@ -1,15 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-nav-bar',
+  selector: 'csi-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss']
+  styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent implements OnInit {
+  leftSections = [
+    {
+      text: 'Jobs',
+      link: 'jobs',
+    },
+    {
+      text: 'Skills',
+      link: 'skills',
+    },
+    {
+      text: 'Shop',
+      link: 'shop',
+    },
+  ];
 
-  constructor() { }
+  rightSections = [
+    {
+      text: 'Settings',
+      link: 'settings',
+    },
+  ];
 
-  ngOnInit(): void {
-  }
+  constructor() {}
 
+  ngOnInit(): void {}
 }

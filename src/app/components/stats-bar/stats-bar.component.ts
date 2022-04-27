@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-stats-bar',
+  selector: 'csi-stats-bar',
   templateUrl: './stats-bar.component.html',
   styleUrls: ['./stats-bar.component.scss']
 })
