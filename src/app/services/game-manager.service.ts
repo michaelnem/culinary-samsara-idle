@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { SaveManagerService } from './save-manager.service';
 import { PlayerService } from './player.service';
 import { PlayerData } from '../interfaces/playerData';
@@ -10,12 +10,13 @@ import { takeUntil, tap } from 'rxjs/operators';
 })
 export class GameManagerService {
   private _pause$: any = new Subject();
-  private _tick: Observable<any>;
+  private _tick?: Observable<any>;
   private sub?: Subscription;
+
+  private tickSubject = new Subject();
 
   constructor(
     private saveManagerService: SaveManagerService,
-    private playerService: PlayerService
   ) {
     this.load();
     this._tick = interval(300).pipe(
@@ -29,19 +30,25 @@ export class GameManagerService {
     // if (value % 10 === 0) {
     //   this.save();
     // }
-    this.playerService.tick();
+
+    // this.playerService.tick();
+    this.tickSubject.next(value);
   };
+
+  get tick$() {
+    return this.tickSubject.asObservable();
+  }
 
   load() {
     const savedGame = this.saveManagerService.loadGame();
     if (!savedGame) {
       return;
     }
-    this.playerService.setPlayer(savedGame as PlayerData);
+    // this.playerService.setPlayer(savedGame as PlayerData);
   }
 
   save() {
-    this.saveManagerService.saveGame(this.playerService.getPlayer());
+    // this.saveManagerService.saveGame(this.playerService.getPlayer());
   }
 
   pause() {
@@ -49,6 +56,6 @@ export class GameManagerService {
   }
 
   resume() {
-    this.sub = this._tick.subscribe();
+    this.sub = this._tick?.subscribe();
   }
 }

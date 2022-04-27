@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -6,8 +6,6 @@ import { Injectable } from '@angular/core';
 export class ScreenManagerService {
 
   activeScreen: string = 'jobs';
-
-  constructor() { }
 
   changeScreen(screen: string) {
     this.activeScreen = screen;

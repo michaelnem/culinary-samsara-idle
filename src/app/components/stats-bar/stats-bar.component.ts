@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { PlayerData } from 'src/app/interfaces/playerData';
+import { Age, AgeService } from 'src/app/services/age.service';
 import { PlayerService } from '../../services/player.service';
 
 @Component({
@@ -7,11 +10,18 @@ import { PlayerService } from '../../services/player.service';
   styleUrls: ['./stats-bar.component.scss'],
 })
 export class StatsBarComponent implements OnInit {
-  constructor(private playerService: PlayerService) {}
 
-  ngOnInit(): void {}
+  player$?: Observable<PlayerData>;
+  age$?: Observable<Age>;
 
-  get player() {
-    return this.playerService.getPlayer();
+  constructor(private playerService: PlayerService,
+    private ageService: AgeService,
+    private cdrRef: ChangeDetectorRef
+    ) {}
+
+  ngOnInit(): void {
+    this.player$ = this.playerService.player$;
+    this.age$ = this.ageService.age$;
   }
+
 }

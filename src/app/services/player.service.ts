@@ -4,6 +4,7 @@ import { JobsService } from './jobs.service';
 import { AgeService } from './age.service';
 import { SkillsService } from './skills.service';
 import { SectionsEnum } from '../enums/sections.enum';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,22 +14,26 @@ export class PlayerService {
   happiness: number = 1;
   rebirths: number = 0;
 
-  constructor(
-    private ageService: AgeService,
-    private jobsService: JobsService,
-    private skillsService: SkillsService
-  ) {}
-
-  getPlayer(): PlayerData {
-    return {
-      age: this.ageService.age,
+  playerSubject = new BehaviorSubject(
+    {
       lifeSpan: this.ageService.lifespan,
       coins: this.coins,
       happiness: this.happiness,
       progression: {
         jobs: this.jobsService.getProgression(),
       },
-    };
+    });
+
+  constructor(
+    private ageService: AgeService,
+    private jobsService: JobsService,
+    private skillsService: SkillsService
+  ) {
+
+  }
+
+  get player$(): Observable<PlayerData> {
+    return this.playerSubject.asObservable();
   }
 
   /**
@@ -36,7 +41,7 @@ export class PlayerService {
    * @param {PlayerData} savedGame
    */
   setPlayer(savedGame: PlayerData) {
-    this.ageService.age = savedGame.age;
+    // this.ageService.age = savedGame.age;
     this.ageService.lifespan = savedGame.lifeSpan;
     this.coins = savedGame.coins;
     this.happiness = savedGame.happiness;
@@ -47,10 +52,10 @@ export class PlayerService {
    * happens every X seconds (by gameService)
    * increments age, get earnings .... should do more
    */
-  tick() {
-    this.ageService.increaseAge();
-    this.getEarnings();
-  }
+  // tick() {
+  //   this.ageService.increaseAge();
+  //   this.getEarnings();
+  // }
 
   /**
    * @description Increase the earnings for the player

@@ -1,11 +1,23 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { GameManagerService } from './game-manager.service';
+
+export interface Age { days: number; years: number }
 
 @Injectable({
   providedIn: 'root',
 })
 export class AgeService {
-  age: { days: number; years: number } = { days: 0, years: 0 };
+
+  ageSubject = new BehaviorSubject<Age>({ days: 0, years: 0 });
+
   lifespan: number = 70;
+
+  constructor(private gameManagerService: GameManagerService) {
+    this.gameManagerService.tick$.subscribe(() => {
+      this.increaseAge();
+    });
+  }
 
   /**
    * @description validate age is not bigger than lifespan
@@ -13,16 +25,19 @@ export class AgeService {
    * sets days to 0 and increase years by 1
    */
   increaseAge() {
-    if (this.age.years >= this.lifespan) {
+    const age = this.ageSubject.getValue();
+    
+    if (age.years >= this.lifespan) {
       return;
     }
 
-    this.age.days++;
+    age.days++;
 
-    if (this.age.days >= 365) {
-      this.age.days = 0;
-      this.age.years++;
+    if (age.days >= 365) {
+      age.days = 0;
+      age.years++;
     }
+    this.age = age;
   }
 
   /**
@@ -31,5 +46,13 @@ export class AgeService {
    */
   resetAge() {
     this.age = { days: 0, years: 0 };
+  }
+
+  set age(newAge: Age) {
+    this.ageSubject.next(newAge)
+  }
+
+  get age$() {
+    return this.ageSubject.asObservable();
   }
 }

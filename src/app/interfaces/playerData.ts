@@ -12,10 +12,6 @@ export interface ProgressionType {
 }
 
 export interface PlayerData {
-  age: {
-    years: number;
-    days: number;
-  };
   lifeSpan: number;
   coins: number;
   happiness: number;
