@@ -1,6 +1,6 @@
 import {SectionInterface} from "./section";
 
-export interface A {
+export interface JobProgression {
   id: number;
   level: number;
   xpEarned: number;
@@ -8,7 +8,7 @@ export interface A {
 }
 
 export interface ProgressionType {
-  [key: string]: A[];
+  [key: string]: JobProgression[];
 }
 
 export interface PlayerData {
@@ -27,5 +27,5 @@ const progression: ProgressionType = {
       xpEarned: 100,
       xpToNextLevel: 300,
     }
-  ] 
+  ]
 }

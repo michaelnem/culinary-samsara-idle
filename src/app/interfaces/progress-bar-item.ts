@@ -1,4 +1,4 @@
-export interface Multiplier { 
+export interface Multiplier {
   effectsOn: string;
   value: number;
 }
@@ -8,4 +8,6 @@ export interface ProgressBarItem {
   name: string;
   tooltip?: string;
   multipliers?: Multiplier[];
+  baseXpPerLevel: number;
+  baseCost: number;
 }

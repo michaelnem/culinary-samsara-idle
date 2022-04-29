@@ -19,14 +19,15 @@ export interface SectionInterface {
 }
 
 
-const section: SectionInterface = {
+const JOBS: SectionInterface = {
   id: 1,
   name: 'job',
   requirements: [],
   progressBarItems: [
     {
       id: 1,
-      name: 'knife cutting'
+      name: 'knife cutting',
+      baseCost: 8,
     }
   ]
 };
