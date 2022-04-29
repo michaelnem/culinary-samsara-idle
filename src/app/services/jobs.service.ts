@@ -4,13 +4,14 @@ import { Earnable } from '../interfaces/earnable.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { JobProgression } from '../interfaces/playerData';
 import { ProgressBarItem } from '../interfaces/progress-bar-item';
+import {STATIC_KITCHEN_JOBS} from "../interfaces/section";
 
 @Injectable({
   providedIn: 'root',
 })
 export class JobsService implements Upgradable, Earnable {
 
-  jobs: ProgressBarItem[] = [];
+  jobs: ProgressBarItem[] = STATIC_KITCHEN_JOBS.progressBarItems;
   private _progressionData = new BehaviorSubject<Map<number, JobProgression>>(
     this._setInitValues()
   );
@@ -26,7 +27,7 @@ export class JobsService implements Upgradable, Earnable {
       map.set(job.id, {
         id: job.id,
         xpEarned: 0,
-        level: 0,
+        level: 1, //TODO: depends on env, if dev, set to 1 else 0
         xpToNextLevel: job.baseXpPerLevel,
       });
     });

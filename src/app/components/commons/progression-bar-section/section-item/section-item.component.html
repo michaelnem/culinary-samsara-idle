@@ -1,0 +1,13 @@
+<ng-container *ngIf="progressBarItem && progressionDataItem">
+<!--   Item's name   -->
+  <div>
+    <span>Name: {{ progressBarItem.name }}</span>
+  </div>
+  <!--   Item's level   -->
+  <div>
+    <span>Level: {{ progressionDataItem.level }}</span>
+  </div>
+  <button mat-button color="primary">
+    <mat-icon>edit</mat-icon>
+  </button>
+</ng-container>

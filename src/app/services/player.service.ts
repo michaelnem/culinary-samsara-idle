@@ -20,7 +20,7 @@ export class PlayerService {
       coins: this.coins,
       happiness: this.happiness,
       progression: {
-        jobs: this.jobsService.getProgression(),
+        // jobs: this.jobsService.getProgression(),
       },
     });
 

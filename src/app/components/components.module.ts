@@ -16,6 +16,9 @@ import { ScreenManagerService } from '../services/screen-manager.service';
 import { AgeService } from '../services/age.service';
 import { GameManagerService } from '../services/game-manager.service';
 import { PlayerService } from '../services/player.service';
+import { ProgressionBarSectionComponent } from './commons/progression-bar-section/progression-bar-section.component';
+import { SectionItemComponent } from './commons/progression-bar-section/section-item/section-item.component';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -29,8 +32,10 @@ import { PlayerService } from '../services/player.service';
     NavBarComponent,
     ScreensComponent,
     NavBarItemComponent,
+    ProgressionBarSectionComponent,
+    SectionItemComponent,
   ],
-  imports: [CommonModule, MatCardModule, MatButtonModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule],
   providers: [
     PlayerService,
     ScreenManagerService,

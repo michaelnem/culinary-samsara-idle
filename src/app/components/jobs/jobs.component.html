@@ -1,1 +1,8 @@
-<p>jobs works!</p>
+<div *ngIf="progressionData$ | async as progressionData">
+  <div *ngFor="let section of sections" class="section">
+    <csi-progression-bar-section
+      [section]="section"
+      [progressionData]="progressionData"
+    ></csi-progression-bar-section>
+  </div>
+</div>

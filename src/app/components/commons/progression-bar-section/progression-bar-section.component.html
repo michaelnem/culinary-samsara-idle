@@ -1,0 +1,26 @@
+<ng-container *ngIf="section">
+  <!--  Section Title  -->
+  <div class="section__title">
+    {{ section.name }}
+  </div>
+  <!--  Section Content with progress data  -->
+  <div
+    *ngFor="let progressBarItem of section.progressBarItems"
+    class="section__item"
+  >
+    <ng-container
+      *ngIf="
+        progressionData &&
+        getProgressionItemFromMap(
+          progressionData,
+          progressBarItem.id
+        ) as progressionDataItem
+      "
+    >
+      <csi-section-item
+        [progressionDataItem]="progressionDataItem"
+        [progressBarItem]="progressBarItem"
+      ></csi-section-item>
+    </ng-container>
+  </div>
+</ng-container>
