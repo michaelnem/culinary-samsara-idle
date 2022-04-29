@@ -1,0 +1,18 @@
+@import "colors";
+
+$border-radius: 4px;
+
+.progress-bar {
+    &::-webkit-progress-bar {
+        background: $background-gray;
+        border-radius: $border-radius;
+    }
+    &::-webkit-progress-value {
+        border-radius: $border-radius;
+        transition: width .1s;
+    }
+    appearance: none;
+     
+    height: 25px;
+    width: 250px;
+}
