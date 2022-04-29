@@ -1,11 +1,7 @@
-import {SectionInterface} from "./section";
+import { SectionInterface } from './section';
+import { BaseItemProgressionData } from '../services/baseProgression';
 
-export interface JobProgression {
-  id: number;
-  level: number;
-  xpEarned: number;
-  xpToNextLevel: number;
-}
+export interface JobProgression extends BaseItemProgressionData {}
 
 export interface ProgressionType {
   [key: string]: JobProgression[];
@@ -18,7 +14,6 @@ export interface PlayerData {
   progression: ProgressionType;
 }
 
-
 const progression: ProgressionType = {
   jobs: [
     {
@@ -26,6 +21,6 @@ const progression: ProgressionType = {
       level: 3,
       xpEarned: 100,
       xpToNextLevel: 300,
-    }
-  ]
-}
+    },
+  ],
+};

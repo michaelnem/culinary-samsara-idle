@@ -28,6 +28,8 @@ const JOBS: SectionInterface = {
       id: 1,
       name: 'knife cutting',
       baseCost: 8,
+      tooltip: 'Cut a knife',
+      baseXpPerLevel: 1,
     }
   ]
 };

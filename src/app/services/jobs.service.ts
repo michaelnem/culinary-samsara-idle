@@ -9,9 +9,10 @@ import { ProgressBarItem } from '../interfaces/progress-bar-item';
   providedIn: 'root',
 })
 export class JobsService implements Upgradable, Earnable {
+
   jobs: ProgressBarItem[] = [];
-  private _jobProgression = new BehaviorSubject<Map<number, JobProgression>>(
-    this.setInitValues()
+  private _progressionData = new BehaviorSubject<Map<number, JobProgression>>(
+    this._setInitValues()
   );
 
   constructor() {}
@@ -19,7 +20,7 @@ export class JobsService implements Upgradable, Earnable {
   /**
    * Create initial map of job progression
    */
-  setInitValues(): Map<number, JobProgression> {
+  private _setInitValues(): Map<number, JobProgression> {
     const map = new Map<number, JobProgression>();
     this.jobs.forEach((job) => {
       map.set(job.id, {
@@ -32,8 +33,8 @@ export class JobsService implements Upgradable, Earnable {
     return map;
   }
 
-  get jobProgression$(): Observable<Map<number, JobProgression>> {
-    return this._jobProgression.asObservable();
+  get progressionData$(): Observable<Map<number, JobProgression>> {
+    return this._progressionData.asObservable();
   }
 
   /**
@@ -41,11 +42,11 @@ export class JobsService implements Upgradable, Earnable {
    * This method is used to update A job.
    * @param {JobProgression} job The id of the job to update.
    */
-  set jobProgression(job: JobProgression) {
+  set progressionData(job: JobProgression) {
     const jobId = job.id;
-    const jobProgression = this._jobProgression.getValue();
+    const jobProgression = this._progressionData.getValue();
     jobProgression.set(jobId, job);
-    this._jobProgression.next(jobProgression);
+    this._progressionData.next(jobProgression);
   }
 
   /**
@@ -54,11 +55,11 @@ export class JobsService implements Upgradable, Earnable {
    * @param {JobProgression} jobs The array of jobs to update.
    */
   set jobsProgression(jobs: JobProgression[]) {
-    const jobProgression = this._jobProgression.getValue();
+    const jobProgression = this._progressionData.getValue();
     jobs.forEach((job) => {
       jobProgression.set(job.id, job);
     });
-    this._jobProgression.next(jobProgression);
+    this._progressionData.next(jobProgression);
   }
 
   /**
@@ -66,7 +67,7 @@ export class JobsService implements Upgradable, Earnable {
    * @returns {number}
    */
   getEarnings(): number {
-    const jobProgression = this._jobProgression.getValue();
+    const jobProgression = this._progressionData.getValue();
     const earnings = Array.from(jobProgression.values()).reduce((acc, curr) => {
       return acc + curr.level * curr.xpToNextLevel;
     }, 0) as number;
@@ -80,14 +81,14 @@ export class JobsService implements Upgradable, Earnable {
    */
   upgrade(id: number, playerCoins: number): void {
     try {
-      const baseCost = this.getBaseCost(id);
-      const job = this.getJob(id);
+      const baseCost = this.getBaseUpgradeCostById(id);
+      const job = this.getById(id);
       const cost = job.level * baseCost;
       if (playerCoins < cost) {
         return;
       }
       job.level++;
-      this.jobProgression = job;
+      this.progressionData = job;
     } catch (error) {
       console.error(error);
       return;
@@ -100,8 +101,8 @@ export class JobsService implements Upgradable, Earnable {
    * @returns {JobProgression}
    * @throws {Error} if job is not found
    */
-  getJob(id: number): JobProgression {
-    const jobs = this._jobProgression.getValue();
+  getById(id: number): JobProgression {
+    const jobs = this._progressionData.getValue();
     const job = jobs.get(id);
     if (!job) {
       throw new Error('Job not found');
@@ -115,10 +116,10 @@ export class JobsService implements Upgradable, Earnable {
    * @returns {number} the item cost
    * @throws {Error} if job is not found
    */
-  getUpgradeCost(id: number): number {
+  getUpgradeCostById(id: number): number {
     try {
-      const baseCost = this.getBaseCost(id);
-      const job = this.getJob(id);
+      const baseCost = this.getBaseUpgradeCostById(id);
+      const job = this.getById(id);
       return job.level * baseCost;
     } catch (error) {
       throw error;
@@ -131,16 +132,12 @@ export class JobsService implements Upgradable, Earnable {
    * @returns {number} the item base cost
    * @throws {Error} if the item is not found
    */
-  getBaseCost(id: number): number {
+  getBaseUpgradeCostById(id: number): number {
     const job = this.jobs.find((job) => job.id === id);
     if (!job) {
       throw new Error('Job not found');
     }
     return job.baseCost;
-  }
-
-  getProgression() {
-    return [];
   }
 
   /**

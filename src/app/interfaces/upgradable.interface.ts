@@ -11,5 +11,5 @@ export interface Upgradable {
    * @param id
    * @returns {number | undefined} the item cost
    */
-  getUpgradeCost(id: number): number | undefined;
+  getUpgradeCostById(id: number): number | undefined;
 }
