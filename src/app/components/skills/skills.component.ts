@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameManagerService } from 'src/app/services/game-manager.service';
 
 @Component({
   selector: 'csi-skills',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./skills.component.scss']
 })
 export class SkillsComponent implements OnInit {
+  skillValue = 0;
 
-  constructor() { }
+  constructor(private gameManagerService: GameManagerService) { }
 
   ngOnInit(): void {
+    this.gameManagerService.tick$.subscribe({
+      next: () => {
+        if (this.skillValue >= 100) {
+          this.skillValue = 0
+        } else {
+          this.skillValue += 10;
+        }
+      }
+    });
   }
 
 }

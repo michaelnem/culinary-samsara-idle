@@ -2,10 +2,10 @@
   "name": "progress-game",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
+    "s": "npm run serve",
+    "serve": "ng serve --open",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "build:watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,

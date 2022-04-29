@@ -1,5 +1,5 @@
-<div *ngIf="age$ | async as age">
-  <span>Your age: </span>
-  <span>Years: {{age.years}} </span>
-  <span>Days: {{age.days}}</span>
+<div *ngIf="(age$ | async) as age">
+  <div>Your age: </div>
+  <div>Years: {{age.years}} </div>
+  <div>Days: {{age.days}}</div>
 </div>

@@ -18,7 +18,8 @@ import { GameManagerService } from '../services/game-manager.service';
 import { PlayerService } from '../services/player.service';
 import { ProgressionBarSectionComponent } from './commons/progression-bar-section/progression-bar-section.component';
 import { SectionItemComponent } from './commons/progression-bar-section/section-item/section-item.component';
-import {MatIconModule} from "@angular/material/icon";
+import { MatIconModule } from '@angular/material/icon';
+import { UtilsModule } from '../utils/utils.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,13 @@ import {MatIconModule} from "@angular/material/icon";
     ProgressionBarSectionComponent,
     SectionItemComponent,
   ],
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    UtilsModule,
+  ],
   providers: [
     PlayerService,
     ScreenManagerService,

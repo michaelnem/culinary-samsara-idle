@@ -22,6 +22,7 @@ export class ProgressionBarSectionComponent implements OnInit {
   ): JobProgression | undefined {
     const job = map.get(jobId);
     const hasLevel = job && job.level;
+
     return hasLevel ? job : undefined;
   }
 }
