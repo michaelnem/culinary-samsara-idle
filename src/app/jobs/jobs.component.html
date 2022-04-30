@@ -1,13 +1,19 @@
+<csi-job-group
+  *ngFor="let jobGroup of sectionsWithData$ | async"
+  [jobsGroupTitle]="jobGroup.name"
+  [jobs]="jobGroup.progressBarItems"
+></csi-job-group>
+
 <!--A test with pipe-->
 <!--<div *ngIf="sectionsWithData$ | async as progressionData">-->
 <!--  {{getSection(progressionData)}}-->
 <!--</div>-->
 
-<div *ngIf="progressionData$ | async as progressionData">
+<!-- <div *ngIf="progressionData$ | async as progressionData">
   <div *ngFor="let section of sections" class="section">
     <csi-progression-bar-section
       [section]="section"
       [progressionData]="progressionData"
     ></csi-progression-bar-section>
   </div>
-</div>
+</div> -->

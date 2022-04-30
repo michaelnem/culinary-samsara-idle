@@ -1,13 +1,15 @@
 import { Injectable, NgZone } from '@angular/core';
 
+export type ScreenType = 'jobs' | 'skills' | 'shop' | 'settings';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ScreenManagerService {
 
-  activeScreen: string = 'skills';
+  activeScreen: ScreenType = 'jobs';
 
-  changeScreen(screen: string) {
+  changeScreen(screen: ScreenType) {
     this.activeScreen = screen;
   }
 }

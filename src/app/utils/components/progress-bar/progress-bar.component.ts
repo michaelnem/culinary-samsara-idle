@@ -12,9 +12,9 @@ export class ProgressBarComponent implements OnInit {
   @Input() max = 100;
   _value = 0;
   @Input() set value(value: number) {
-    this._value = (value >= 0 && value <= this.max) ? value : this.max;
+    this._value = Math.max(0, Math.min(value, this.max));
   }
-  @Input() color = 'orange';
+  @Input() label = '';
 
   constructor() { }
 

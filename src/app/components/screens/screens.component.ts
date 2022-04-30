@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ScreenManagerService } from './screen-manager.service';
+import { ScreenManagerService, ScreenType } from './screen-manager.service';
 
 @Component({
   selector: 'csi-screens',
@@ -12,7 +12,7 @@ export class ScreensComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  changeScreen(section: string) {
+  changeScreen(section: ScreenType) {
     this.screensService.changeScreen(section);
   }
 }

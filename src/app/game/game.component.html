@@ -1,0 +1,9 @@
+<main class="game">
+  <csi-stats-bar class="game-sidebar"></csi-stats-bar>
+
+  <mat-tab-group class="game-tab">
+    <mat-tab *ngFor="let tab of list" [label]="tab.label | uppercase">
+        <ng-template [ngComponentOutlet]="tab.component"></ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</main>

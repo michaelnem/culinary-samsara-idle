@@ -1,9 +1,7 @@
-import { Injectable, NgZone } from '@angular/core';
-import { SaveManagerService } from './save-manager.service';
-import { PlayerService } from './player.service';
-import { PlayerData } from '../../models/interfaces/playerData';
+import { Injectable } from '@angular/core';
 import { interval, Observable, Subject, Subscription } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
+import { SaveManagerService } from './save-manager.service';
 
 @Injectable({
   providedIn: 'root',

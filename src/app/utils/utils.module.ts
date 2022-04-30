@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { ProgressionBarSectionComponent } from './components/progression-bar-section/progression-bar-section.component';
 
 const exportedComponents = [
-  ProgressBarComponent
+  ProgressBarComponent,
+  ProgressionBarSectionComponent
 ];
 
 @NgModule({
@@ -11,7 +14,8 @@ const exportedComponents = [
     ...exportedComponents
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatTooltipModule
   ],
   exports: [
     ...exportedComponents
