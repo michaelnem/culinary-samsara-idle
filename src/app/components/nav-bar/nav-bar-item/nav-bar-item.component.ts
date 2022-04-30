@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ScreenManagerService} from "../../../services/screen-manager.service";
+import { ScreenManagerService } from '../../screens/screen-manager.service';
 
 @Component({
   selector: 'csi-nav-bar-item',

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { JobsService } from '../../services/jobs.service';
+import { JobsService } from './jobs.service';
 import { Observable } from 'rxjs';
-import { JobProgression } from '../../interfaces/playerData';
+import { JobProgression } from '../models/interfaces/playerData';
 import {
   STATIC_KITCHEN_JOBS,
   SectionInterface,
-} from '../../interfaces/section';
+} from '../models/interfaces/section';
 import {map} from "rxjs/operators";
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GameManagerService } from '../../services/game-manager.service';
-import { PlayerService } from '../../services/player.service';
+import { GameManagerService } from '../../utils/services/game-manager.service';
+import { PlayerService } from '../../utils/services/player.service';
 
 @Component({
   selector: 'csi-main',

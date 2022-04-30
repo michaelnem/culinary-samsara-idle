@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { SaveManagerService } from './save-manager.service';
 import { PlayerService } from './player.service';
-import { PlayerData } from '../interfaces/playerData';
+import { PlayerData } from '../../models/interfaces/playerData';
 import { interval, Observable, Subject, Subscription } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 

@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PlayerData } from 'src/app/interfaces/playerData';
-import { Age, AgeService } from 'src/app/services/age.service';
-import { PlayerService } from '../../services/player.service';
+import { PlayerData } from 'src/app/models/interfaces/playerData';
+import { Age, AgeService } from 'src/app/utils/services/age.service';
+import { PlayerService } from 'src/app/utils/services/player.service';
 
 @Component({
   selector: 'csi-stats-bar',

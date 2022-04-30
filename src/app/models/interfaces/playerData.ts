@@ -1,5 +1,5 @@
 import { SectionInterface } from './section';
-import { BaseItemProgressionData } from '../services/baseProgression';
+import { BaseItemProgressionData } from '../classes/baseProgression';
 
 export interface JobProgression extends BaseItemProgressionData {}
 

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ScreenManagerService } from '../../services/screen-manager.service';
+import { ScreenManagerService } from './screen-manager.service';
 
 @Component({
   selector: 'csi-screens',

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { PlayerData } from '../interfaces/playerData';
-import { JobsService } from './jobs.service';
+import { PlayerData } from '../../models/interfaces/playerData';
+import { JobsService } from '../../jobs/jobs.service';
 import { AgeService } from './age.service';
-import { SkillsService } from './skills.service';
-import { SectionsEnum } from '../enums/sections.enum';
+import { SkillsService } from '../../skills/skills.service';
+import { SectionsEnum } from '../../models/enums/sections.enum';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({

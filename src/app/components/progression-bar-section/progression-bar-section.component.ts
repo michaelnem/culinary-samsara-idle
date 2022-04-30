@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SectionInterface } from '../../../interfaces/section';
+import { SectionInterface } from '../../models/interfaces/section';
 import { Observable } from 'rxjs';
-import { JobProgression } from '../../../interfaces/playerData';
+import { JobProgression } from '../../models/interfaces/playerData';
 
 @Component({
   selector: 'csi-progression-bar-section',

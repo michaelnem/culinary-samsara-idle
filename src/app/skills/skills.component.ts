@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameManagerService } from 'src/app/services/game-manager.service';
+import { GameManagerService } from 'src/app/utils/services/game-manager.service';
 
 @Component({
   selector: 'csi-skills',

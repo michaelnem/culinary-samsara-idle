@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Upgradable } from '../interfaces/upgradable.interface';
-import { Earnable } from '../interfaces/earnable.interface';
+import { Upgradable } from '../models/interfaces/upgradable.interface';
+import { Earnable } from '../models/interfaces/earnable.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { JobProgression } from '../interfaces/playerData';
-import { ProgressBarItem } from '../interfaces/progress-bar-item';
-import {STATIC_KITCHEN_JOBS} from "../interfaces/section";
+import { JobProgression } from '../models/interfaces/playerData';
+import { ProgressBarItem } from '../models/interfaces/progress-bar-item';
+import {STATIC_KITCHEN_JOBS} from "../models/interfaces/section";
 
 @Injectable({
   providedIn: 'root',
