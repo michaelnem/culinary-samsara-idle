@@ -1,3 +1,8 @@
+<!--A test with pipe-->
+<!--<div *ngIf="sectionsWithData$ | async as progressionData">-->
+<!--  {{getSection(progressionData)}}-->
+<!--</div>-->
+
 <div *ngIf="progressionData$ | async as progressionData">
   <div *ngFor="let section of sections" class="section">
     <csi-progression-bar-section

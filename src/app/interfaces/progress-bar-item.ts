@@ -10,4 +10,5 @@ export interface ProgressBarItem {
   multipliers?: Multiplier[];
   baseXpPerLevel: number;
   baseCost: number;
+  data?: any;
 }
