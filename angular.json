@@ -23,8 +23,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/progress-game",
+            "outputPath": "docs",
             "index": "src/index.html",
+            "baseHref": "./culinary-samsara-idle/",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
