@@ -80,6 +80,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "baseHref": "/"
+          },
           "configurations": {
             "production": {
               "browserTarget": "progress-game:build:production"

@@ -1,0 +1,15 @@
+:host:last-of-type {
+    .progress-item {
+        margin-bottom: 0;
+    }
+}
+
+.progress-item {
+    margin-bottom: 8px;
+}
+
+.progress-item-title {
+    font-size: 12px;
+    margin-bottom: 4px;
+    color: rgba(#000000, .6);
+}

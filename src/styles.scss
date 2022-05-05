@@ -14,12 +14,18 @@ body {
   box-sizing: border-box;
 }
 
+
+mat-divider.mat-divider {
+  margin: 8px 0;
+}
+
+
 .table-cell {
-  padding: 2px 4px;
+  padding: 0 4px;
 
   &-component {
     & > *:first-child {
-      padding: 2px 4px;
+      padding: 0 4px;
     }
   }
 }

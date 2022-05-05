@@ -1,5 +1,14 @@
 <main class="game">
-  <csi-stats-bar class="game-sidebar"></csi-stats-bar>
+  
+  <csi-game-state class="game-sidebar">
+    <csi-stats-bar></csi-stats-bar>
+    <mat-divider></mat-divider>
+    <csi-player-network></csi-player-network>
+    <mat-divider></mat-divider>
+    <csi-player-progress></csi-player-progress>
+    <mat-divider></mat-divider>
+    <csi-player-states></csi-player-states>
+  </csi-game-state>
 
   <mat-tab-group class="game-tab">
     <mat-tab *ngFor="let tab of list" [label]="tab.label | uppercase">
