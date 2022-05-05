@@ -9,3 +9,17 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+.table-cell {
+  padding: 2px 4px;
+
+  &-component {
+    & > *:first-child {
+      padding: 2px 4px;
+    }
+  }
+}

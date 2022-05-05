@@ -1,3 +1,6 @@
+import { JobProgression } from "./job";
+
+
 export interface Multiplier {
   effectsOn: string;
   value: number;
@@ -10,5 +13,5 @@ export interface ProgressBarItem {
   multipliers?: Multiplier[];
   baseXpPerLevel: number;
   baseCost: number;
-  data?: any;
+  data?: JobProgression;
 }

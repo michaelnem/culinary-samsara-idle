@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { max } from 'rxjs/operators';
 
 @Component({
   selector: 'csi-progress-bar',
@@ -8,13 +7,20 @@ import { max } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProgressBarComponent implements OnInit {
+  private readonly DEFAULT_MAX_VALUE = 100;
 
-  @Input() max = 100;
-  _value = 0;
-  @Input() set value(value: number) {
-    this._value = Math.max(0, Math.min(value, this.max));
-  }
   @Input() label = '';
+
+  _max = this.DEFAULT_MAX_VALUE;
+  @Input() set max(max: number | undefined) {
+    this._max = Math.max(0, max || this.DEFAULT_MAX_VALUE);
+    this.value = this._value;
+  }
+
+  _value = 0;
+  @Input() set value(value: number | undefined) {
+    this._value = Math.max(0, Math.min(value || 0, this._max || 100));
+  }
 
   constructor() { }
 

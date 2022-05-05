@@ -35,14 +35,14 @@ export const STATIC_KITCHEN_JOBS: SectionInterface = {
       name: 'knife cutting',
       baseCost: 8,
       tooltip: 'Cut a knife',
-      baseXpPerLevel: 1,
+      baseXpPerLevel: .1,
     },
     {
       id: 2,
       name: 'hammering',
       baseCost: 8,
       tooltip: 'Hammer a hammer',
-      baseXpPerLevel: 1,
+      baseXpPerLevel: .1,
     },
   ],
 };

@@ -1,9 +1,9 @@
 <div
   class="progress"
 >
-  <progress class="progress-bar" [value]="_value" [max]="max"></progress>
+  <progress class="progress-bar" [value]="_value" [max]="_max"></progress>
   <div class="progress-label">
     <div>{{ label | titlecase }}</div>
-    <div>{{_value + '/' + max}}</div>
+    <div>{{(_value | number) + '/' + _max}}</div>
   </div>
 </div>

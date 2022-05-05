@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { JobProgression } from 'src/app/models/interfaces/job';
 import {ProgressBarItem} from "../../models/interfaces/progress-bar-item";
-import {JobProgression} from "../../models/interfaces/playerData";
 
 @Component({
   selector: 'csi-section-item',
