@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { JobProgression } from 'src/app/models/interfaces/playerData';
+import { JobProgression } from 'src/app/models/interfaces/job';
 import { SectionInterface } from '../../../models/interfaces/section';
 
 @Component({

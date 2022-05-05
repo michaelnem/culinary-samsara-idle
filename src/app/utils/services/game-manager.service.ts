@@ -17,14 +17,14 @@ export class GameManagerService {
     private saveManagerService: SaveManagerService,
   ) {
     this.load();
-    this._tick = interval(300).pipe(
+    this._tick = interval(200).pipe(
       tap(this.gameTick),
       takeUntil(this._pause$)
     );
     this.resume();
   }
 
-  gameTick = (value: number) => {
+  private gameTick = (value: number) => {
     // if (value % 10 === 0) {
     //   this.save();
     // }

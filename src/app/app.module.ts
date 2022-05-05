@@ -6,12 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { GameComponent } from './game/game.component';
+import { JobGroupComponent } from './jobs/job-group/job-group.component';
+import { JobProgressBarDirective } from './jobs/job-progress-bar.directive';
 import { JobsComponent } from './jobs/jobs.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ShopComponent } from './shop/shop.component';
 import { SkillsComponent } from './skills/skills.component';
 import { UtilsModule } from './utils/utils.module';
-import { JobGroupComponent } from './jobs/job-group/job-group.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { JobGroupComponent } from './jobs/job-group/job-group.component';
     ShopComponent,
     SettingsComponent,
     JobGroupComponent,
+    JobProgressBarDirective,
   ],
   imports: [
     BrowserModule,

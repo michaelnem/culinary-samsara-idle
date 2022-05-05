@@ -2,11 +2,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { ProgressionAbstract, BaseItemProgressionDataGeneric } from './progression.abstract';
 
 export interface BaseItemProgressionData extends BaseItemProgressionDataGeneric<any> {
-  id: number;
   level: number;
   xpEarned: number;
   xpToNextLevel: number;
+  xpPerTick: number;
 }
+
 export class ProgressionBase {
 // TODO: fix this - not sure why it's not working
 // export class ProgressionBase implements ProgressionAbstract {

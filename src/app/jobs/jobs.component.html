@@ -1,5 +1,5 @@
 <csi-job-group
-  *ngFor="let jobGroup of sectionsWithData$ | async"
+  *ngFor="let jobGroup of jobGroupsWithData$ | async"
   [jobsGroupTitle]="jobGroup.name"
   [jobs]="jobGroup.progressBarItems"
 ></csi-job-group>
